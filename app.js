@@ -6,8 +6,40 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var clubRouter = require('./routes/club');
+var eventRouter = require('./routes/event');
+var challengesRouter = require('./routes/challenges');
+var unityRouter = require('./routes/unity');
+var partRouter = require('./routes/parteneriat');
+var pressRouter = require('./routes/press');
+var specRouter = require('./routes/speciality');
+var calRouter = require('./routes/calendrier');
+var tarRouter = require('./routes/tarifs');
 
 var app = express();
+
+var mongoose = require('mongoose');
+const url ="mongodb://localhost:27017/mongonode";
+mongoose.connect(url,{useNewUrlParser: true });
+mongoose.set()
+var mongo = mongoose.connection;
+
+mongo.on('connected', ()=>{
+  console.log('ouvrir / initialiser connexion');
+
+});
+
+mongo.on('open', ()=>{
+    console.log('connexion etablie');
+
+});
+
+mongo.on('eroor', (err)=>{
+    console.log(err);
+
+});
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +53,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/club', clubRouter);
+app.use('/event', eventRouter);
+app.use('/challenges', challengesRouter);
+app.use('/unity', unityRouter);
+app.use('/part', partRouter);
+app.use('/press', pressRouter);
+app.use('/speciality', specRouter);
+app.use('/calendrier', calRouter);
+app.use('/tarif', tarRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
