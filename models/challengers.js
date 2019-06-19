@@ -18,5 +18,5 @@ var challengesSchema = mongoose.Schema({
         required:false
     }
 })
-var challenges =mongoose.model('challenges',userschema,'challenges');
+var challenges =mongoose.model('challenges',challengesSchema,'challenges');
 module.exports=challenges;
