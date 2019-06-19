@@ -11,8 +11,7 @@ router.get('/', function(req, res, next) {
          // res.statusCode=200,
           //res.contentType('application/json'),
           res.json(data)
-      })
-      
+      })      
 });
 
 router.post('/add',function(req,res){
@@ -36,7 +35,7 @@ router.post('/add',function(req,res){
  }) 
  console.log(m)
  //console.log("reponses contenu"+ req.body.reponses)
-})
+});
 
 router.put('/update/:id',function(req,res){
 

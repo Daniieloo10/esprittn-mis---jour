@@ -18,5 +18,5 @@ var clubSchema = mongoose.Schema({
         required:false
     }
 })
-var club =mongoose.model('club',userschema,'club');
+var club =mongoose.model('club',clubSchema,'club');
 module.exports=club;
