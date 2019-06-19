@@ -34,5 +34,5 @@ var specialitySchema = mongoose.Schema({
 
    
 })
-var unity =mongoose.model('unity',userschema,'unity');
-module.exports=unity;
+var speciality =mongoose.model('specility',specialitySchema,'specility');
+module.exports=speciality;
