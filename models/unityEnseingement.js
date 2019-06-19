@@ -22,5 +22,5 @@ var unitySchema = mongoose.Schema({
         {type:Schema.Types.ObjectId,ref:'speciality'}
     ],
 })
-var unity =mongoose.model('unity',userschema,'unity');
+var unity =mongoose.model('unity',unitySchema,'unity');
 module.exports=unity;
