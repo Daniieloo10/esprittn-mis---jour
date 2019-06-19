@@ -16,7 +16,8 @@ var eventSchema = mongoose.Schema({
     image :{
         type:String,
         required:false
-    }
+    },
+    user:{type:Schema.Types.ObjectId,ref:'user'},
 })
-var event =mongoose.model('event',userschema,'event');
+var event =mongoose.model('event',eventSchema,'event');
 module.exports=event;

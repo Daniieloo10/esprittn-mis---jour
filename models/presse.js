@@ -18,5 +18,5 @@ var pressSchema = mongoose.Schema({
         required:false
     }
 })
-var press =mongoose.model('press',userschema,'press');
+var press =mongoose.model('press',pressSchema,'press');
 module.exports=press;
