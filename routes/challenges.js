@@ -6,7 +6,7 @@ var challenges = require('../models/challengers')
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   var users = null ; 
-  challenges.find()
+  challenges.find().sort('-date')
       .then((data)=>{
          // res.setHeader("Access-Control-Allow-Origin", "*"),
          // res.statusCode=200,

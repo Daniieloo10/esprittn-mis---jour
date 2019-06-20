@@ -8,7 +8,7 @@ var unity = require('../models/unityEnseingement')
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   var users = null ; 
-  unity.find()
+  unity.find().sort('-date')
       .then((data)=>{
          // res.setHeader("Access-Control-Allow-Origin", "*"),
          // res.statusCode=200,

@@ -5,13 +5,13 @@ var event = require('../models/event')
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   var users = null ; 
-  event.find()
+  event.find().sort('-date')
       .then((data)=>{
          // res.setHeader("Access-Control-Allow-Origin", "*"),
          // res.statusCode=200,
           //res.contentType('application/json'),
           res.json(data)
-      })      
+      })    
 });
 
 router.post('/add',function(req,res){
