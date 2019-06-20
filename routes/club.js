@@ -21,6 +21,7 @@ router.post('/add',function(req,res){
   m  = new club({
     title : req.body.title,
     date : now,
+    type : req.body.type,
     desciption : req.body.desciption,
     url : req.body.url,
     image : req.body.image,

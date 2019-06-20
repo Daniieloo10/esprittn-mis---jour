@@ -15,6 +15,7 @@ var pressRouter = require('./routes/press');
 var specRouter = require('./routes/speciality');
 var calRouter = require('./routes/calendrier');
 var tarRouter = require('./routes/tarifs');
+var infraRouter = require('./routes/infrastructure');
 
 var app = express();
 
@@ -62,6 +63,7 @@ app.use('/press', pressRouter);
 app.use('/speciality', specRouter);
 app.use('/calendrier', calRouter);
 app.use('/tarif', tarRouter);
+app.use('/infrastructure', infraRouter);
 
 
 // catch 404 and forward to error handler

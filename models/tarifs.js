@@ -4,7 +4,7 @@ var Schema=mongoose.Schema;
 var tarifSchema = mongoose.Schema({
     titreFormation:{
         type:String,
-        enum:['cours_du_jour','cours_du_soir','EspritPrepa'],
+        enum:['cours_du_jour','cours_du_soir','EspritPrepa','MBA'],
         required:false
     },
     date:Date,

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 
 var Schema=mongoose.Schema;
-var clubSchema = mongoose.Schema({
+var infraSchema = mongoose.Schema({
 
     title:String,
     date:Date,
@@ -14,14 +14,10 @@ var clubSchema = mongoose.Schema({
         enum:['sportif','autres'],
         required:false
     },
-    url :{
-        type:String,
-        required:false
-    },
     image :{
         type:String,
         required:false
     }
 })
-var club =mongoose.model('club',clubSchema,'club');
-module.exports=club;
+var infra =mongoose.model('infra',infraSchema,'infra');
+module.exports=infra;
