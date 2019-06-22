@@ -31,7 +31,7 @@ router.get('/', function(req, res, next) {
       })    
 });
 
-router.post('/add',function(req,res){
+router.post('/add',upload.single('eventImage'),function(req,res){
 
   var now = new Date()
   m  = new event({
@@ -42,7 +42,6 @@ router.post('/add',function(req,res){
     image : req.file.path,
     user:req.body.user
    
-
  });
  m.save(function(err,ques){
      if (err) 
@@ -101,6 +100,19 @@ event.findById(req.params.id,
     if (err) return res.send(err)
     res.send(meetings);
 });
+
+})
+
+router.get('/searsh',function(req,res){
+  var title = req.query.title 
+  console.log(title)
+  event.find({ 'title': new RegExp(title, 'i') }).sort('-date')
+  .then((data)=>{
+     // res.setHeader("Access-Control-Allow-Origin", "*"),
+     // res.statusCode=200,
+      //res.contentType('application/json'),
+      res.json(data)
+  }) 
 
 })
 

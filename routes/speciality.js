@@ -91,5 +91,107 @@ spec.findById(req.params.id,
 });
 })
 
+router.get('/searsh',function(req,res){
+  var title = req.query.title 
+  console.log(title)
+  spec.find({ 'title': new RegExp(title, 'i') }).sort('-date')
+  .then((data)=>{
+     // res.setHeader("Access-Control-Allow-Origin", "*"),
+     // res.statusCode=200,
+      //res.contentType('application/json'),
+      res.json(data)
+  }); 
+
+})
+
+router.get('/informatique', function(req, res, next) {
+  var users = null ;
+  var now = new Date() 
+  spec.find()
+      .then((data)=>{
+         // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+         // res.json(data)
+         let sports = [] 
+         data.forEach(element => {
+           if(element.formation==='Informatique'){
+                sports.push(element)
+           }
+         });
+         res.json(sports)
+      })
+      
+      
+  });
+
+  router.get('/esb', function(req, res, next) {
+    var users = null ;
+    var now = new Date() 
+    spec.find()
+        .then((data)=>{
+           // res.setHeader("Access-Control-Allow-Origin", "*"),
+           // res.statusCode=200,
+            //res.contentType('application/json'),
+           // res.json(data)
+           let sports = [] 
+           data.forEach(element => {
+             if(element.formation==='Esb'){
+                  sports.push(element)
+             }
+           });
+           res.json(sports)
+        })
+        
+        
+    });
+
+    
+  router.get('/electro', function(req, res, next) {
+    var users = null ;
+    var now = new Date() 
+    spec.find()
+        .then((data)=>{
+           // res.setHeader("Access-Control-Allow-Origin", "*"),
+           // res.statusCode=200,
+            //res.contentType('application/json'),
+           // res.json(data)
+           let sports = [] 
+           data.forEach(element => {
+             if(element.formation==='electroMecanique'){
+                  sports.push(element)
+             }
+           });
+           res.json(sports)
+        })
+        
+        
+    });
+
+    router.get('/continu', function(req, res, next) {
+      var users = null ;
+      var now = new Date() 
+      spec.find()
+          .then((data)=>{
+             // res.setHeader("Access-Control-Allow-Origin", "*"),
+             // res.statusCode=200,
+              //res.contentType('application/json'),
+             // res.json(data)
+             let sports = [] 
+             data.forEach(element => {
+               if(element.formation==='continu'){
+                    sports.push(element)
+               }
+             });
+             res.json(sports)
+          })
+          
+          
+      });
+  
+
+
+
+
 
 module.exports = router;

@@ -15,7 +15,7 @@ var specialitySchema = mongoose.Schema({
     },
     formation :{
         type:String,
-        enum:['Esb','Ingenierie','electroMecanique','continu'],
+        enum:['Esb','Informatique','electroMecanique','continu'],
         required:false
     },
     typeCycle :{

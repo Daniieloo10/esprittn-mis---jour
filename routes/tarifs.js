@@ -95,4 +95,93 @@ tarif.findById(req.params.id,
 })
 
 
+router.get('/jour', function(req, res, next) {
+  var users = null ;
+  var now = new Date() 
+  tarif.find()
+      .then((data)=>{
+         // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+         // res.json(data)
+         let sports = [] 
+         data.forEach(element => {
+           if(element.titreFormation==='jour'){
+                sports.push(element)
+           }
+         });
+         res.json(sports)
+      })
+      
+      
+  });
+
+  
+router.get('/soir', function(req, res, next) {
+  var users = null ;
+  var now = new Date() 
+  tarif.find()
+      .then((data)=>{
+         // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+         // res.json(data)
+         let sports = [] 
+         data.forEach(element => {
+           if(element.titreFormation==='cours_du_soir'){
+                sports.push(element)
+           }
+         });
+         res.json(sports)
+      })
+      
+      
+  });
+
+  
+router.get('/prepa', function(req, res, next) {
+  var users = null ;
+  var now = new Date() 
+  tarif.find()
+      .then((data)=>{
+         // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+         // res.json(data)
+         let sports = [] 
+         data.forEach(element => {
+           if(element.titreFormation==='prepa'){
+                sports.push(element)
+           }
+         });
+         res.json(sports)
+      })
+      
+      
+  });
+
+  
+router.get('/mba', function(req, res, next) {
+  var users = null ;
+  var now = new Date() 
+  tarif.find()
+      .then((data)=>{
+         // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+         // res.json(data)
+         let sports = [] 
+         data.forEach(element => {
+           if(element.titreFormation==='MBA'){
+                sports.push(element)
+           }
+         });
+         res.json(sports)
+      })
+      
+      
+  });
+
+
+
 module.exports = router;
