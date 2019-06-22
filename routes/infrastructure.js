@@ -1,7 +1,23 @@
 var express = require('express');
 var router = express.Router();
+var multer = require('multer')
 
 var infra = require('../models/infrastructure')
+
+
+//upload image 
+
+const storage = multer.diskStorage ({
+  destination : function(req,file,cb) {
+    cb(null,'./uploads');
+  }, 
+  filename(req,file,cb) {
+    cb(null,new Date().toISOString().replace(/:/g, '-')+file.originalname);
+  }
+})
+
+const upload = multer({storage:storage});
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     var users = null ; 
@@ -15,7 +31,7 @@ router.get('/', function(req, res, next) {
   });
   
   
-  router.post('/add',function(req,res){
+  router.post('/add',upload.single('infraImage'),function(req,res){
   
     var now = new Date()
     m  = new infra({
@@ -23,7 +39,7 @@ router.get('/', function(req, res, next) {
       date : now,
       type : req.body.type,
       desciption : req.body.desciption,
-      image : req.body.image,
+      image : req.file.path,
      
   
    });

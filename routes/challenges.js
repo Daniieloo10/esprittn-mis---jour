@@ -3,6 +3,24 @@ var router = express.Router();
 var challenges = require('../models/challengers')
 
 
+
+var multer = require('multer')
+
+
+//upload image 
+
+const storage = multer.diskStorage ({
+  destination : function(req,file,cb) {
+    cb(null,'./uploads');
+  }, 
+  filename(req,file,cb) {
+    cb(null,new Date().toISOString().replace(/:/g, '-')+file.originalname);
+  }
+})
+
+const upload = multer({storage:storage});
+
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   var users = null ; 
@@ -24,7 +42,7 @@ router.post('/add',function(req,res){
     date : now,
     desciption : req.body.desciption,
     url : req.body.url,
-    image : req.body.image,
+    image : req.file.path,
    
 
  });
