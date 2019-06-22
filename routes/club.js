@@ -1,6 +1,23 @@
 var express = require('express');
 var router = express.Router();
+var multer = require('multer')
+
 var club = require('../models/club')
+
+//upload image 
+
+const storage = multer.diskStorage ({
+  destination : function(req,file,cb) {
+    cb(null,'./uploads');
+  }, 
+  filename(req,file,cb) {
+    cb(null,new Date().toISOString().replace(/:/g, '-')+file.originalname);
+  }
+})
+
+const upload = multer({storage:storage});
+
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -15,8 +32,8 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/add',function(req,res){
-
+router.post('/add',upload.single('clubImage'),function(req,res){
+console.log(req.file)
   var now = new Date()
   m  = new club({
     title : req.body.title,
@@ -24,7 +41,7 @@ router.post('/add',function(req,res){
     type : req.body.type,
     desciption : req.body.desciption,
     url : req.body.url,
-    image : req.body.image,
+    image : req.file.path,
    
 
  });
