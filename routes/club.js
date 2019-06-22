@@ -105,4 +105,60 @@ club.findById(req.params.id,
 });
 })
 
+
+router.get('/sportif', function(req, res, next) {
+  var users = null ;
+  var now = new Date() 
+  club.find()
+      .then((data)=>{
+         // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+         // res.json(data)
+         let sports = [] 
+         data.forEach(element => {
+           if(element.type==='sportif'){
+                sports.push(element)
+           }
+         });
+         res.json(sports)
+      })
+      
+      
+  });
+
+  router.get('/autres', function(req, res, next) {
+    var users = null ;
+    var now = new Date() 
+    club.find()
+        .then((data)=>{
+           // res.setHeader("Access-Control-Allow-Origin", "*"),
+           // res.statusCode=200,
+            //res.contentType('application/json'),
+           // res.json(data)
+           let autres = [] 
+           data.forEach(element => {
+             if(element.type==='autres'){
+                  autres.push(element)
+             }
+           });
+           res.json(autres)
+        })
+        
+        
+    });
+
+    router.get('/searsh',function(req,res){
+      var title = req.query.title 
+      console.log(title)
+      club.find({ 'title': new RegExp(title, 'i') }).sort('-date')
+      .then((data)=>{
+         // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+          res.json(data)
+      }) 
+    
+    })
+
 module.exports = router;
