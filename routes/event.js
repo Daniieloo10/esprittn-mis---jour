@@ -38,6 +38,7 @@ router.post('/add',upload.single('eventImage'),function(req,res){
     title : req.body.title,
     date : now,
     desciption : req.body.desciption,
+    type:req.body.type,
     url : req.body.url,
     image : req.file.path,
     user:req.body.user
@@ -115,5 +116,44 @@ router.get('/searsh',function(req,res){
   }) 
 
 })
+
+   
+router.get('/sportif', function(req, res, next) {
+  var users = null ;
+  var now = new Date() 
+  event.find().sort('-date')
+      .then((data)=>{
+         // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+         // res.json(data)
+         let sports = [] 
+         data.forEach(element => {
+           if(element.type==='sportif'){
+                sports.push(element)
+           }
+         });
+         res.json(sports)
+      })  
+  });
+
+  router.get('/autres', function(req, res, next) {
+    var users = null ;
+    var now = new Date() 
+    event.find().sort('-date')
+        .then((data)=>{
+           // res.setHeader("Access-Control-Allow-Origin", "*"),
+           // res.statusCode=200,
+            //res.contentType('application/json'),
+           // res.json(data)
+           let sports = [] 
+           data.forEach(element => {
+             if(element.type==='autres'){
+                  sports.push(element)
+             }
+           });
+           res.json(sports)
+        })  
+    });
 
 module.exports = router;

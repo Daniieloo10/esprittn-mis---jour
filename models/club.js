@@ -14,6 +14,11 @@ var clubSchema = mongoose.Schema({
         enum:['sportif','autres'],
         required:false
     },
+    sport :{
+        type:String,
+        enum:['indiv','equipe'],
+        required:false
+    },
     url :{
         type:String,
         required:false

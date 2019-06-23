@@ -89,6 +89,49 @@ router.delete('/delete/:id', function(req, res, next) {
 
 });
 
+router.get('/autres', function(req, res, next) {
+  var users = null ;
+  var now = new Date() 
+  actualite.find().sort('-date')
+      .then((data)=>{
+         // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+         // res.json(data)
+         let sports = [] 
+         data.forEach(element => {
+           if(element.type==='autres'){
+                sports.push(element)
+           }
+         });
+         res.json(sports)
+      })  
+  });
+
+     
+router.get('/sportif', function(req, res, next) {
+  var users = null ;
+  var now = new Date() 
+  actualite.find().sort('-date')
+      .then((data)=>{
+         // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+         // res.json(data)
+         let sports = [] 
+         data.forEach(element => {
+           if(element.type==='sportif'){
+                sports.push(element)
+           }
+         });
+         res.json(sports)
+      })  
+  });
+
+
+
+
+
 
 router.get('/id/:id',function(req,res){
 

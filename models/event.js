@@ -9,6 +9,11 @@ var eventSchema = mongoose.Schema({
         type:String,
         required:false
     },
+    type :{
+        type:String,
+        enum:['sportif','autres'],
+        required:false
+    },
     url :{
         type:String,
         required:false

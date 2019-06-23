@@ -39,6 +39,7 @@ console.log(req.file)
     title : req.body.title,
     date : now,
     type : req.body.type,
+    sport : req.body.sport,
     desciption : req.body.desciption,
     url : req.body.url,
     image : req.file.path,
@@ -127,6 +128,9 @@ router.get('/sportif', function(req, res, next) {
       
   });
 
+
+
+
   router.get('/autres', function(req, res, next) {
     var users = null ;
     var now = new Date() 
@@ -160,5 +164,50 @@ router.get('/sportif', function(req, res, next) {
       }) 
     
     })
+
+    
+router.get('/indiv', function(req, res, next) {
+  var users = null ;
+  var now = new Date() 
+  club.find()
+      .then((data)=>{
+         // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+         // res.json(data)
+         let sports = [] 
+         data.forEach(element => {
+           if(element.type==='sportif' && element.sport==='indiv'){
+                sports.push(element)
+           }
+         });
+         res.json(sports)
+      })
+      
+      
+  });
+
+
+    
+router.get('/equipe', function(req, res, next) {
+  var users = null ;
+  var now = new Date() 
+  club.find()
+      .then((data)=>{
+         // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+         // res.json(data)
+         let sports = [] 
+         data.forEach(element => {
+           if(element.type==='sportif' && element.sport==='equipe'){
+                sports.push(element)
+           }
+         });
+         res.json(sports)
+      })
+      
+      
+  });
 
 module.exports = router;
