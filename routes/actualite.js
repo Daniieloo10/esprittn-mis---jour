@@ -68,7 +68,6 @@ actualite.findByIdAndUpdate(req.params.id, {$set: req.body},
     if (err) return res.send(err)
     res.send('act udpated.');
 });
-
 })
 
 
@@ -86,7 +85,6 @@ router.delete('/delete/:id', function(req, res, next) {
         res.send('act deleted.');
       }
   });
-
 });
 
 router.get('/autres', function(req, res, next) {
